@@ -7,7 +7,6 @@ public class Series {
         int result = 0;
         for (int i = 0; i <= n; i++) {
             result += i;
-            System.out.println(result);
         }
         return result;
     }
