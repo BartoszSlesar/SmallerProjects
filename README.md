@@ -1,0 +1,1 @@
+This project will contain code chelenges from Java Master Class, with correct package name convention
