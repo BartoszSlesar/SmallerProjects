@@ -11,8 +11,9 @@ public class BackupResults {
     public Writer getWriter() {
         return writer;
     }
-
+//    Create file that will be used to Save String values
     public void createFile() throws FileNotFoundException {
+//        This method is geting current date and time as file name
         String time = getDateTime() + ".txt";
         File file = new File("src/main/resources/" + time);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
