@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
@@ -43,6 +44,9 @@ public class SeriesTest {
                 Arguments.of(30, 465),
                 Arguments.of(1000000, 500000500000L),
                 Arguments.of(34, 595),
+                Arguments.of(-412, 0),
+                Arguments.of(-223, 0),
+                Arguments.of(0, 0),
                 Arguments.of(5, 15)
         );
     }
