@@ -31,7 +31,7 @@ public class SeriesTest {
 
     @Test
     @DisplayName("nSum is able to process n=1000000 in less then 5ms")
-    public void nSumTimeDurationTestOnLargeNumbers() {
+    public void nSumTimeDurationOnLargeNumbers() {
         //given
         //when
         //then
