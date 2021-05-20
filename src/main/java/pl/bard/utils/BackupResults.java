@@ -20,7 +20,7 @@ public class BackupResults {
         this.writer = new BufferedWriter(outputStreamWriter);
     }
 
-    public void BackupValue(String value) throws IOException {
+    public void backupValue(String value) throws IOException {
         this.writer.append(value);
     }
 
@@ -31,7 +31,7 @@ public class BackupResults {
     private String getDateTime() {
 //        get Current Time and Date of your Time Zone with format dd-MM-yyyy_HH:mm
         ZonedDateTime date = ZonedDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm");
         return date.format(formatter);
     }
 }
