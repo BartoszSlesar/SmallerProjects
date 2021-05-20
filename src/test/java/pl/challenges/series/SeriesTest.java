@@ -1,9 +1,14 @@
 package pl.challenges.series;
 
+import com.sun.jdi.connect.Connector;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.time.Duration;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 @DisplayName("Test Cases for Series")
 public class SeriesTest {
 
-    @Test
-    public void nSumShouldReturnSumOfNNumbers() {
+    @ParameterizedTest
+    @MethodSource("provideNumbersAndExpectedResult")
+    public void nSumShouldReturnSumOfNNumbers(long n, long expected) {
         //given
-        int n = 10;
         //when
-        int result = Series.nSum(10);
+        long result = Series.nSum(n);
         //then
-        assertThat(result, equalTo(55));
+        assertThat(result, equalTo(expected));
     }
 
     @Test
@@ -30,5 +35,15 @@ public class SeriesTest {
         //when
         //then
         assertTimeout(Duration.ofMillis(5), () -> Series.nSum(1000000));
+    }
+
+    private static Stream<Arguments> provideNumbersAndExpectedResult() {
+        return Stream.of(
+                Arguments.of(10, 55),
+                Arguments.of(30, 465),
+                Arguments.of(1000000, 500000500000L),
+                Arguments.of(34, 595),
+                Arguments.of(5, 15)
+        );
     }
 }
