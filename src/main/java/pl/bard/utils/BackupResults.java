@@ -1,14 +1,13 @@
 package pl.bard.utils;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BackupResults {
     private Writer writer;
 
-    public Writer getWriter() {
+    public Writer getWrTiter() {
         return writer;
     }
 //    Create file that will be used to Save String values
