@@ -1,19 +1,19 @@
 package pl.challenges.series;
 
-import net.bytebuddy.implementation.bytecode.Throw;
 
 public class Series {
 
     //    this method will return sum of n values passed as argument
-    public static long nSum(long n) {
+    public static long nSum(int n) {
         long result = 0;
         if (n > 0) {
-            result = n * (n + 1) / 2;
+            result = ((long) n * (n + 1)) / 2;
         }
         return result;
     }
 
-    public static long factorials(long n) {
+    //    this method will factorial
+    public static long factorials(int n) {
         if (n < 0 || n > 20) {
             return 0;
         }
@@ -22,8 +22,8 @@ public class Series {
         }
         return n * factorials(n - 1);
     }
-
-    public static long fibonacci(long n) {
+    //    this method will n fibonacci number
+    public static long fibonacci(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Please only provide positive numbers");
         }

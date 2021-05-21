@@ -21,7 +21,7 @@ public class SeriesTest {
 
     @ParameterizedTest
     @MethodSource("provideNumbersAndExpectedResultNSum")
-    public void nSumShouldReturnSumOfNNumbers(long n, long expected) {
+    public void nSumShouldReturnSumOfNNumbers(int n, long expected) {
         //given
         //when
         long result = Series.nSum(n);
@@ -40,7 +40,7 @@ public class SeriesTest {
 
     @ParameterizedTest
     @MethodSource("provideNumbersAndExpectedResultfactorial")
-    public void factorialShouldReturnCorrectResult(long n, long expected) {
+    public void factorialShouldReturnCorrectResult(int n, long expected) {
         //given
         //when
         long result = Series.factorials(n);
@@ -50,7 +50,7 @@ public class SeriesTest {
 
     @ParameterizedTest
     @ValueSource(ints = {100, 21, -433, 11223})
-    public void factorialShouldReturnZeroForValuesLessThenZeroAndGreaterThen20(long n) {
+    public void factorialShouldReturnZeroForValuesLessThenZeroAndGreaterThen20(int n) {
         //given
         //when
         long result = Series.factorials(n);
@@ -60,7 +60,7 @@ public class SeriesTest {
 
     @ParameterizedTest
     @MethodSource("provideArgumentsForFibonacciMethod")
-    public void fibonacciShouldReturnCorrectValue(long n, long expected) {
+    public void fibonacciShouldReturnCorrectValue(int n, long expected) {
         //given
         //when
         long result = Series.fibonacci(n);
@@ -71,7 +71,7 @@ public class SeriesTest {
     @Test
     public void fibonacciShouldThrowIllegalArgumentExceptionForValuesLessThenZero() {
         //given
-        long value = -1;
+        int value = -1;
         //when
         assertThrows(IllegalArgumentException.class, () -> Series.fibonacci(value));
     }

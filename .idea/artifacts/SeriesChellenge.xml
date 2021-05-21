@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SeriesChellenge">
+    <output-path>$PROJECT_DIR$/../../ProjectJar</output-path>
+    <root id="archive" name="SeriesChellenge.jar" />
+  </artifact>
+</component>
