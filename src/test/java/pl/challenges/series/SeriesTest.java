@@ -58,6 +58,24 @@ public class SeriesTest {
         assertThat(result, equalTo(0L));
     }
 
+    @ParameterizedTest
+    @MethodSource("provideArgumentsForFibonacciMethod")
+    public void fibonacciShouldReturnCorrectValue(long n, long expected) {
+        //given
+        //when
+        long result = Series.fibonacci(n);
+        //then
+        assertThat(result, equalTo(expected));
+    }
+
+    @Test
+    public void fibonacciShouldThrowIllegalArgumentExceptionForValuesLessThenZero() {
+        //given
+        long value = -1;
+        //when
+        assertThrows(IllegalArgumentException.class, () -> Series.fibonacci(value));
+    }
+
 
     private static Stream<Arguments> provideNumbersAndExpectedResultfactorial() {
         return Stream.of(
@@ -80,6 +98,18 @@ public class SeriesTest {
                 Arguments.of(-223, 0),
                 Arguments.of(0, 0),
                 Arguments.of(5, 15)
+        );
+    }
+
+    private static Stream<Arguments> provideArgumentsForFibonacciMethod() {
+        return Stream.of(
+                Arguments.of(0, 0),
+                Arguments.of(1, 1),
+                Arguments.of(2, 1),
+                Arguments.of(4, 3),
+                Arguments.of(7, 13),
+                Arguments.of(8, 21),
+                Arguments.of(15, 610)
         );
     }
 }
