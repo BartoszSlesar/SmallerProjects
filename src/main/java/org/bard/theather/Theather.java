@@ -43,28 +43,72 @@ public class Theather {
         }
     }
 
+    public boolean bookSeat(String seatNumber, double payment) {
+        boolean result = bookSeat(seatNumber);
+        if (result) {
+            payForSeat(seatNumber, payment);
+        }
+        return result;
+    }
+
     public boolean bookSeat(String seatNumber) {
         if (seatNumber == null) {
             return false;
         }
+        boolean result = true;
+        Seat seat = getSeat(seatNumber);
+        if (seat == null) {
+            System.out.println("Seat " + seatNumber + " do not exist");
+            result = false;
+        } else {
+            if (seat.isBooked()) {
+                System.out.println("Seat " + seatNumber + " already booked");
+                result = false;
+            } else {
+                seat.setBooked(true);
+            }
+
+        }
+
+        return result;
+    }
+
+    public boolean payForSeat(String seatNumber, double payment) {
+        Seat seat = getSeat(seatNumber);
+        return payForSeat(seat, payment);
+    }
+
+    public boolean payForSeat(Seat seat, double payment) {
+        if (payment < 0) {
+            return false;
+        }
+        boolean result = false;
+        if (seat != null) {
+            result = true;
+            if (seat.isPaid()) {
+                System.out.println("Seat Already Paid");
+            } else {
+                if (payment >= seat.getPrice()) {
+                    seat.setPaid(true);
+                } else {
+                    result = false;
+                    System.out.println("Not enough money for this sit");
+                }
+
+            }
+        }
+
+        return result;
+    }
+
+
+    private Seat getSeat(String seatNumber) {
         Seat searched = new Seat(seatNumber);
         int seatIndex = Collections.binarySearch(this.seats, searched, null);
         if (seatIndex < 0) {
-            System.out.println("Seat " + seatNumber + " do not exist");
-            return false;
+            return null;
         }
-        Seat seat = this.seats.get(seatIndex);
-        if (seat.isBooked) {
-            System.out.println("Seat " + seatNumber + " already booked");
-            return false;
-        }
-        seat.setBooked(true);
-
-        return true;
-    }
-
-    public boolean payForSeat(double payment) {
-        return false;
+        return seats.get(seatIndex);
     }
 
 
@@ -112,6 +156,10 @@ public class Theather {
 
         public boolean isPaid() {
             return isPaid;
+        }
+
+        public void setPaid(boolean paid) {
+            isPaid = paid;
         }
 
         @Override
