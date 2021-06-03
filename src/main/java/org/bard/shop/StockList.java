@@ -2,13 +2,14 @@ package org.bard.shop;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class StockList {
     private final Map<String, StockItem> list;
 
     public StockList() {
-        this.list = new HashMap<>();
+        this.list = new LinkedHashMap<>();
     }
 
     public int addStock(StockItem item) {
@@ -57,10 +58,10 @@ public class StockList {
             StockItem stockItem = item.getValue();
             double itemValue = stockItem.getPrice() * stockItem.quantityInStock();
             builder.append(stockItem).append(". There are ").append(stockItem.quantityInStock()).append(" in stock. ");
-            builder.append("Value of items: ").append(itemValue).append("\n");
+            builder.append("Value of items: ").append(String.format("%.2f", itemValue)).append("\n");
             totalCost += itemValue;
         }
-        builder.append("Total stock value: ").append(totalCost);
+        builder.append("Total stock value: ").append(String.format("%.2f", totalCost));
         return builder.toString();
     }
 }
