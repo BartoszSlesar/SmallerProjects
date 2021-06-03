@@ -7,12 +7,12 @@ public class Planet extends HeavenlyBody {
     }
 
     @Override
-    public boolean addMoon(HeavenlyBody body) {
+    public boolean addSattelite(HeavenlyBody body) {
         if (body.getBodyType() != BodyType.MOON) {
             System.out.println("Planets can only have Moon as satellites");
             return false;
         }
 
-        return super.addMoon(body);
+        return super.addSattelite(body);
     }
 }

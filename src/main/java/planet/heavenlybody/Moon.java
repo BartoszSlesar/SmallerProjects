@@ -6,7 +6,7 @@ public class Moon extends HeavenlyBody {
     }
 
     @Override
-    public boolean addMoon(HeavenlyBody body) {
+    public boolean addSattelite(HeavenlyBody body) {
         return false;
     }
 }

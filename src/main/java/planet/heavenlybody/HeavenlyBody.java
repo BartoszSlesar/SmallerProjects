@@ -3,9 +3,6 @@ package planet.heavenlybody;
 import java.util.HashSet;
 import java.util.Set;
 
-enum BodyType {
-    STAR, PLANET, MOON, ASTEROID, DEFAULT
-}
 
 public class HeavenlyBody {
     private final String name;
@@ -13,6 +10,10 @@ public class HeavenlyBody {
     //    using hash sets
     private final Set<HeavenlyBody> satellites;
     private final BodyType bodyType;
+
+    enum BodyType {
+        STAR, PLANET, MOON, ASTEROID, DEFAULT
+    }
 
     public HeavenlyBody(String name, double orbitalPeriod) {
         this(name, orbitalPeriod, BodyType.DEFAULT);
@@ -37,13 +38,9 @@ public class HeavenlyBody {
         return orbitalPeriod;
     }
 
-    public boolean addMoon(HeavenlyBody body) {
-        if ((this.bodyType == BodyType.PLANET) && (body.getBodyType() != BodyType.MOON)) {
-            System.out.println("Planets can only have Moon as satellites");
-            return false;
-        }
+    public boolean addSattelite(HeavenlyBody sattelite) {
 
-        return this.satellites.add(body);
+        return this.satellites.add(sattelite);
 
     }
 
@@ -58,15 +55,15 @@ public class HeavenlyBody {
         if (this == obj) {
             return true;
         }
-//         check if obj is null and then check if they are the same class (in case of subclasses)
-        if ((obj == null) || (obj.getClass() != this.getClass())) {
-            return false;
+
+        if (obj instanceof HeavenlyBody) {
+            HeavenlyBody body = (HeavenlyBody) obj;
+            if (this.name.equals(body.getName())) {
+                return this.bodyType == body.getBodyType();
+            }
         }
-        if (this.bodyType != ((HeavenlyBody) obj).getBodyType()) {
-            return false;
-        }
-        String objName = ((HeavenlyBody) obj).getName();
-        return this.name.equals(objName);
+        return false;
+
     }
 
     //    check if class are equal, the same class should always generate the same hashCode
