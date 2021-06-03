@@ -3,7 +3,7 @@ package pl.challenges.adventuregame.immutable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LocationImmutable {
+public final class LocationImmutable {
     private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
