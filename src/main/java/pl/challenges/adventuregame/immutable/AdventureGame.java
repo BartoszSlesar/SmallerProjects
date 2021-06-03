@@ -13,11 +13,10 @@ public class AdventureGame {
         vocabulary = initializeVocabulary();
 
 
+
+        locations.put(0, new LocationImmutable(0, "You are sitting in front of a computer learning Java", null));
+
         Map<String, Integer> tempExits = new HashMap<>();
-        locations.put(0, new LocationImmutable(0, "You are sitting in front of a computer learning Java", tempExits));
-
-
-        tempExits = new HashMap<>();
         tempExits.put("W", 2);
         tempExits.put("E", 3);
         tempExits.put("S", 4);

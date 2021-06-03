@@ -9,11 +9,12 @@ public class LocationImmutable {
     private final Map<String, Integer> exits;
 
     public LocationImmutable(int locationID, String description, Map<String, Integer> exits) {
+
         this.locationID = locationID;
         this.description = description;
 //        in here we are making sure that to exist will be new HashMap with new id,
 //        that it will not be able to modify it after initialization
-        this.exits = new HashMap<>(exits);
+        this.exits = exits == null ? new HashMap<>() : new HashMap<>(exits);
         this.exits.put("Q", 0);
     }
 
