@@ -56,7 +56,7 @@ public class StockList {
 
     @Override
     public String toString() {
-//        only in this chellenge, to print values, easly you will not do this normally in production
+   //   only in this chellenge, to print values, easly you will not do this normally in production
         StringBuilder builder = new StringBuilder();
         builder.append("\nStock List\n");
         double totalCost = 0.0;
