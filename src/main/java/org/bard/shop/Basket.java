@@ -8,7 +8,8 @@ public class Basket {
 
     public Basket(String name) {
         this.name = name;
-        this.list = new HashMap<>();
+//     using treemap to have content in order.
+        this.list = new TreeMap<>();
     }
 
     public int addToBasket(StockItem item, int quantity) {

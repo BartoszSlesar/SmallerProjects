@@ -62,7 +62,7 @@ public class StockItem implements Comparable<StockItem> {
 
     @Override
     public int compareTo(StockItem o) {
-
+//        in Basket class we are using treeMap, the coimpare to method, is called to Sort items while they are added
         if (this == o) {
             return 0;
         }
