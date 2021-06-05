@@ -13,12 +13,26 @@ public class Basket {
     }
 
     public int addToBasket(StockItem item, int quantity) {
-        if ((item != null) && (quantity > 0)) {
+        if ((item != null)) {
             int inBasket = list.getOrDefault(item, 0);
-            list.put(item, inBasket + quantity);
-            return inBasket;
+            if (inBasket >= Math.abs(quantity)) {
+                list.put(item, inBasket + quantity);
+                return inBasket;
+            }
+
         }
         return 0;
+    }
+
+    public void removeFromBasket(StockItem item, int quantity) {
+        int value = addToBasket(item, -quantity);
+        if (value <= 0 && item != null) {
+            list.remove(item);
+        }
+    }
+
+    public void clearBasket() {
+        list.clear();
     }
 
     public Map<StockItem, Integer> Items() {
